@@ -24,6 +24,10 @@ public class Funcionario {
 		this.crmv = crmv;
 		this.especialidade = especialidade;
 	}
+	
+	public Funcionario(int matricula) {
+		this.matricula = matricula;
+	}
 
 	public int getMatricula() {
 		return matricula;
@@ -47,6 +51,10 @@ public class Funcionario {
 
 	public String getEspecialidade() {
 		return especialidade;
+	}
+	
+	public void setMatricula(int matricula) {
+		this.matricula = matricula;
 	}
 
 }

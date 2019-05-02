@@ -117,7 +117,7 @@ public class AnimalDAO {
 				int codAnimalMae = rs_buscar_animais.getInt("codAnimalMae");	
 				Date dtNascAnimal = DateSqlHelper.toDate(rs_buscar_animais.getDate("dtNascAnimal"));
 
-				animal = new Animal(nomeAnimal, codEspecie, especie,codAnimal, codAnimalPai, codAnimalMae, dtNascAnimal);
+				animal = new Animal(nomeAnimal, codEspecie, especie, codAnimal, codAnimalPai, codAnimalMae, dtNascAnimal);
 
 				System.out.println(nomeAnimal+" - "+codEspecie+" - "+codAnimal+" - "+codAnimalPai+" - "+codAnimalMae+" - "+DateSqlHelper.toDateSql(dtNascAnimal));
 			}
