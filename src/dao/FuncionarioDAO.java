@@ -77,6 +77,7 @@ public class FuncionarioDAO {
 				+" crmv = "+funcionario.getCrmv()+","
 				+" especialidade = "+funcionario.getEspecialidade()+","
 				+" ;";
+		
 
 		int resultado_att_funcionario = con.executaSQL(att_funcionario);
 		if(resultado_att_funcionario > 0) {
