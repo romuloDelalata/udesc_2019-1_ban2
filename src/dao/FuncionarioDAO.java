@@ -2,9 +2,12 @@ package dao;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import configuracao.conexao;
+import helpers.DateSqlHelper;
+import modelo.Animal;
 import modelo.Funcionario;
 
 public class FuncionarioDAO {
@@ -98,6 +101,29 @@ public class FuncionarioDAO {
 			System.out.println("Erro na exclusao de funcionario.");
 			return false;
 		}
+	}
+	
+	public Funcionario busca_funcionario_por_id(int idFuncionario) {
+		String buscar_funcionarios = "";
+		ResultSet rs_buscar_funcionarios = con.executaBusca(buscar_funcionarios);
+		Funcionario funcionario = null;
+		try {
+			while(rs_buscar_funcionarios.next()) {
+				int matricula = rs_buscar_funcionarios.getInt("matricula");
+				String nome = rs_buscar_funcionarios.getString("nome");
+				String endereco = rs_buscar_funcionarios.getString("endereco");
+				String email = rs_buscar_funcionarios.getString("email");
+				int crmv = rs_buscar_funcionarios.getInt("crmv");
+				String especialidade = rs_buscar_funcionarios.getString("especialidade");
+
+				funcionario = new Funcionario(matricula, nome, endereco, email, crmv, especialidade);
+
+				System.out.println(matricula+" - "+nome+" - "+endereco+" - "+email+" - "+crmv+" - "+especialidade);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return funcionario;
 	}
 
 }
