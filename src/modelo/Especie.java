@@ -1,8 +1,14 @@
 package modelo;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Especie {
+	
+	@SerializedName("codespecie")
 	private int codespecie;
+	@SerializedName("nomeespecie")
 	private String nomeespecie;
+	@SerializedName("expectativaespecie")
 	private String expectativaespecie;
 
 

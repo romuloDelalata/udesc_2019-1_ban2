@@ -17,21 +17,21 @@ public class AnimalDAO {
 	}
 
 	public boolean inserir_animal(Animal animal) {
-		String inserir_animal = "insert into animais (nomeAnimal, codEspecie, codAnimal, codAnimalPai, codAnimalMae, dtNascAnimal)"+
+		String inserir_animal = "insert into animais (\"nomeAnimal\", \"codEspecie\", \"codAnimal\", \"codAnimalPai\", \"codAnimalMae\", \"dtNascAnimal\")"+
 				"values('"+
 				animal.getNomeAnimal()+
 				"', '"+
 				animal.getCodEspecie()+
-				"', '"+
-				"(select max(\"codAnimal\"+1) from animais)"+
-				"', '"+
+				"', "+
+				"(select max(\"codAnimal\")+1 from animais)"+
+				", '"+
 				animal.getCodAnimalPai()+
 				"', '"+
 				animal.getCodAnimalMae()+
 				"', '"+
 				DateSqlHelper.toDateSql(animal.getDtNascAnimal())+
 				"')";
-
+		System.out.println(inserir_animal);
 		int resultado_inserir_animal = con.executaSQL(inserir_animal);
 		if(resultado_inserir_animal > 0) {
 			System.out.println("Cadastro de animal feito com sucesso!");
@@ -70,13 +70,14 @@ public class AnimalDAO {
 
 	public boolean att_animal(Animal animal) {
 		String att_animal = "update animais set"
-				+" nomeAnimal = "+animal.getNomeAnimal()+","
-				+" codEspecie = "+animal.getCodEspecie()+","
-				+" codAnimalPai = "+animal.getCodAnimalPai()+","
-				+" AnimalMae = "+animal.getCodAnimalMae()+","
-				+" dtNascAnimal = "+DateSqlHelper.toDateSql(animal.getDtNascAnimal())+","
-				+" where codAnimal = "+animal.getCodAnimal()+";";
-
+				+" \"nomeAnimal\" = '"+animal.getNomeAnimal()+"',"
+				+" \"codEspecie\" = "+animal.getCodEspecie()+","
+				+" \"codAnimalPai\" = "+animal.getCodAnimalPai()+","
+				+" \"codAnimalMae\" = "+animal.getCodAnimalMae()+","
+				+" \"dtNascAnimal\" = '"+DateSqlHelper.toDateSql(animal.getDtNascAnimal())+"'"
+				+" where \"codAnimal\" = "+animal.getCodAnimal()+";";
+		
+		System.out.println(att_animal);
 		int resultado_att_animal = con.executaSQL(att_animal);
 		if(resultado_att_animal > 0) {
 			System.out.println("Atualizacao de animal feito com sucesso!");
