@@ -21,7 +21,7 @@ public class FuncionarioController {
 	}
 
 	public boolean atualizarFuncionario(Funcionario funcionarioAtualizado) {
-		return this.dao.att_funcionario(funcionarioAtualizado);
+		return this.dao.att_funcionario(funcionarioAtualizado); 
 	}
 
 

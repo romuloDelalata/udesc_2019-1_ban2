@@ -104,7 +104,7 @@ public class FuncionarioDAO {
 	}
 	
 	public Funcionario busca_funcionario_por_id(int idFuncionario) {
-		String buscar_funcionarios = "";
+		String buscar_funcionarios = "select * from funcionarios where \"matricula\" = "+idFuncionario+";";
 		ResultSet rs_buscar_funcionarios = con.executaBusca(buscar_funcionarios);
 		Funcionario funcionario = null;
 		try {
