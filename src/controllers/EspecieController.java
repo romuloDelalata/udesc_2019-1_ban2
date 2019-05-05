@@ -17,4 +17,16 @@ public class EspecieController {
 		return this.dao.busca_especie();
 	}
 
+	public boolean cadastra(Especie especie) {
+		return this.dao.inserir_especie(especie);
+	}
+
+	public boolean atualiza(Especie especie) {
+		return this.dao.att_especie(especie);
+	}
+
+	public boolean deletar(Especie especie) {
+		return this.dao.delete_especie(especie);
+	}
+
 }

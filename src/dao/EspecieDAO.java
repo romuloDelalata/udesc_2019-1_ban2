@@ -16,14 +16,15 @@ public class EspecieDAO {
 
 	public boolean inserir_especie(Especie especie) {
 		String inserir_especie = "insert into especies (codEspecie, nomeespecie, expectativaespecie)"+
-				"values('"+
-				especie.getCodespecie()+
-				"', '"+
+				"values("+
+				"(select max(codEspecie)+1 from especies)"+
+				", '"+
 				especie.getNomeespecie()+
 				"', '"+
 				especie.getExpectativaespecie()+
 				"')";
 
+		System.out.println(inserir_especie);
 		int resultado_inserir_especie = con.executaSQL(inserir_especie);
 		if(resultado_inserir_especie > 0) {
 			System.out.println("Cadastro de especie feito com sucesso!");
@@ -58,11 +59,10 @@ public class EspecieDAO {
 
 	public boolean att_especie(Especie especie) {
 		String att_especie = "update especies set"
-				+" codEspecie = "+especie.getCodespecie()+","
-				+" nomeespecie = "+especie.getNomeespecie()+","
-				+" expectativaespecie = "+especie.getExpectativaespecie()+","
-				+" ;";
-
+				+" nomeespecie = '"+especie.getNomeespecie()+"',"
+				+" expectativaespecie = "+especie.getExpectativaespecie()
+				+" where codespecie = "+especie.getCodespecie()+";";
+		System.out.println(att_especie);
 		int resultado_att_especie = con.executaSQL(att_especie);
 		if(resultado_att_especie > 0) {
 			System.out.println("Atualizacao de especie feito com sucesso!");
@@ -75,7 +75,7 @@ public class EspecieDAO {
 
 	public boolean delete_especie(Especie especie) {
 		String delete_especie = "delete from especies where"
-				+" codEspecie = "+especie.getCodespecie()+","
+				+" codEspecie = "+especie.getCodespecie()
 				+" ;";
 
 		int resultado_delete_especie = con.executaSQL(delete_especie);

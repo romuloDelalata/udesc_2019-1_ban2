@@ -70,15 +70,14 @@ public class FuncionarioDAO {
 
 	public boolean att_funcionario(Funcionario funcionario) {
 		String att_funcionario = "update funcionarios set"
-				+" matricula = "+funcionario.getMatricula()+","
-				+" nome = "+funcionario.getNome()+","
-				+" endereco = "+funcionario.getEndereco()+","
-				+" email = "+funcionario.getEmail()+","
+				+" nome = '"+funcionario.getNome()+"',"
+				+" endereco = '"+funcionario.getEndereco()+"',"
+				+" email = '"+funcionario.getEmail()+"',"
 				+" crmv = "+funcionario.getCrmv()+","
-				+" especialidade = "+funcionario.getEspecialidade()+","
-				+" ;";
+				+" especialidade = '"+funcionario.getEspecialidade()+"'"
+				+" where matricula = "+funcionario.getMatricula()+";";
 		
-
+		System.out.println(att_funcionario);
 		int resultado_att_funcionario = con.executaSQL(att_funcionario);
 		if(resultado_att_funcionario > 0) {
 			System.out.println("Atualizacao de funcionario feito com sucesso!");
@@ -91,7 +90,7 @@ public class FuncionarioDAO {
 
 	public boolean delete_funcionario(Funcionario funcionario) {
 		String delete_funcionario = "delete from funcionarios where"
-				+" matricula = "+funcionario.getMatricula()+","
+				+" matricula = "+funcionario.getMatricula()
 				+" ;";
 
 		int resultado_delete_funcionario = con.executaSQL(delete_funcionario);

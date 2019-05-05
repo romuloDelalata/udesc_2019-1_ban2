@@ -18,6 +18,8 @@ public class Especie {
 		this.expectativaespecie = expectativaespecie;
 	}
 
+	public Especie() {	}
+
 	public int getCodespecie() {
 		return codespecie;
 	}
@@ -28,6 +30,10 @@ public class Especie {
 
 	public String getExpectativaespecie() {
 		return expectativaespecie;
+	}
+
+	public void setCodEspecie(int codespecie) {
+		this.codespecie = codespecie;
 	}
 
 }
