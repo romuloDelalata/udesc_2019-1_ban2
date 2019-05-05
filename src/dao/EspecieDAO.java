@@ -6,6 +6,7 @@ import java.util.List;
 
 import configuracao.conexao;
 import modelo.Especie;
+import modelo.Funcionario;
 
 public class EspecieDAO {
 	private conexao con;
@@ -86,6 +87,26 @@ public class EspecieDAO {
 			System.out.println("Erro na exclusao de especie.");
 			return false;
 		}
+	}
+	
+	public Especie busca_especie_por_id(int idEspecie) {
+		String buscar_funcionarios = "select * from especies where \"codespecie\" = "+idEspecie+";";
+		ResultSet rs_buscar_especies = con.executaBusca(buscar_especies);
+		Especie especie = null;
+		try {
+			while(rs_buscar_especies.next()) {
+				int codEspecie = rs_buscar_especies.getInt("codEspecie");
+				String nomeespecie = rs_buscar_especies.getString("nomeespecie");
+				String expectativaespecie = rs_buscar_especies.getString("expectativaespecie");
+
+				especie = new Especie(codEspecie, nomeespecie, expectativaespecie);
+
+				System.out.println(codEspecie+" - "+nomeespecie+" - "+expectativaespecie);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return especie;
 	}
 
 }

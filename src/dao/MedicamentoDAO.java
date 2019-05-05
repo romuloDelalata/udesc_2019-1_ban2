@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import configuracao.conexao;
+import modelo.Funcionario;
 import modelo.Medicamento;
 
 public class MedicamentoDAO {
@@ -85,6 +86,25 @@ public class MedicamentoDAO {
 			System.out.println("Erro na exclusao de medicamento.");
 			return false;
 		}
+	}
+	
+	public Medicamento busca_medicamento_por_id(int idMedicamento) {
+		String buscar_medicamentos = "select * from medicamentos where \"codmedicamento\" = "+idMedicamento+";";
+		ResultSet rs_buscar_medicamentos = con.executaBusca(buscar_medicamentos);
+		Medicamento medicamento = null;
+		try {
+			while(rs_buscar_medicamentos.next()) {
+				int codmedicamento = rs_buscar_medicamentos.getInt("codmedicamento");
+				String nomemedicamento = rs_buscar_medicamentos.getString("nomemedicamento");	
+
+				medicamento = new Medicamento(codmedicamento, nomemedicamento);
+
+				System.out.println(codmedicamento+" - "+nomemedicamento);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return medicamento;
 	}
 
 

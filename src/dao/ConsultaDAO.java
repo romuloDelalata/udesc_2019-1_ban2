@@ -8,8 +8,9 @@ import java.util.List;
 import configuracao.conexao;
 import helpers.DateSqlHelper;
 import modelo.Consulta;
+import modelo.Funcionario;
 
-public class ConsultaDAO {
+public class Consulta {
 	private conexao con;
 
 	public ConsultaDAO() {
@@ -96,6 +97,28 @@ public class ConsultaDAO {
 			System.out.println("Erro na exclusao de consulta.");
 			return false;
 		}
+	}
+	
+	public Consulta busca_consulta_por_id(int idConsulta) {
+		String buscar_consultas = "select * from consultas where \"codconsulta\" = "+idConsulta+";";
+		ResultSet rs_buscar_consultas = con.executaBusca(buscar_consultas);
+		Consulta consulta = null;
+		try {
+			while(rs_buscar_consultas.next()) {
+				int codanimal = rs_buscar_consultas.getInt("codanimal");
+				int matricula = rs_buscar_consultas.getInt("matricula");
+				Date data = DateSqlHelper.toDate(rs_buscar_consultas.getDate("data"));
+				String diagnosticoconsulta = rs_buscar_consultas.getString("diagnosticoconsulta");
+				int codconsulta = rs_buscar_consultas.getInt("codconsulta");						
+
+				consulta = new Consulta(codanimal, matricula, data, diagnosticoconsulta, codconsulta);
+
+				System.out.println(codanimal+" - "+matricula+" - "+DateSqlHelper.toDateSql(data)+" - "+diagnosticoconsulta+" - "+codconsulta);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return consulta;
 	}
 	
 }
