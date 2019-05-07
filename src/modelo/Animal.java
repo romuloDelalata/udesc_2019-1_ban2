@@ -10,19 +10,19 @@ public class Animal {
 	@SerializedName("nomeAnimal")
 	private String nomeAnimal;
 	@SerializedName("codEspecie")
-	private int codEspecie;
+	private Integer codEspecie;
 	@SerializedName("especie")
 	private String especie;
 	@SerializedName("codAnimal")
-	private int codAnimal;
+	private Integer codAnimal;
 	@SerializedName("codAnimalPai")
-	private int codAnimalPai;
+	private Integer codAnimalPai;
 	@SerializedName("codAnimalMae")
-	private int codAnimalMae;
+	private Integer codAnimalMae;
 	@SerializedName("dtNascAnimal")
 	private Date dtNascAnimal;
 
-	public Animal(String nomeAnimal, int codEspecie, String especie,int codAnimal, int codAnimalPai, int codAnimalMae, Date dtNascAnimal) {
+	public Animal(String nomeAnimal, Integer codEspecie, String especie,Integer codAnimal, Integer codAnimalPai, Integer codAnimalMae, Date dtNascAnimal) {
 		this.nomeAnimal = nomeAnimal;
 		this.codEspecie = codEspecie;
 		this.especie = especie;
@@ -32,7 +32,7 @@ public class Animal {
 		this.dtNascAnimal = dtNascAnimal;
 	}
 
-	public Animal(int codAnimal) {
+	public Animal(Integer codAnimal) {
 		this.codAnimal = codAnimal;
 	}
 
@@ -40,19 +40,19 @@ public class Animal {
 		return nomeAnimal;
 	}
 
-	public int getCodEspecie() {
+	public Integer getCodEspecie() {
 		return codEspecie;
 	}
 
-	public int getCodAnimal() {
+	public Integer getCodAnimal() {
 		return codAnimal;
 	}
 
-	public int getCodAnimalPai() {
+	public Integer getCodAnimalPai() {
 		return codAnimalPai;
 	}
 
-	public int getCodAnimalMae() {
+	public Integer getCodAnimalMae() {
 		return codAnimalMae;
 	}
 
@@ -60,7 +60,7 @@ public class Animal {
 		return dtNascAnimal;
 	}
 
-	public void setCodAnimal(int codAnimal) {
+	public void setCodAnimal(Integer codAnimal) {
 		this.codAnimal = codAnimal;
 	}
 

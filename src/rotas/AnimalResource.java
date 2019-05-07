@@ -51,6 +51,7 @@ public class AnimalResource {
 	@POST
 	@Path("animal")
 	public String inserirAnimal(String dados) {
+		System.out.println("Inserindo animal : " + dados);
 		Animal animal = new Gson().fromJson(dados, Animal.class);
 		return String.valueOf(animalController.inserirAnimal(animal));
 	}

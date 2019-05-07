@@ -24,11 +24,11 @@ public class AnimalDAO {
 				animal.getCodEspecie()+
 				"', "+
 				"(select max(\"codAnimal\")+1 from animais)"+
-				", '"+
+				", "+
 				animal.getCodAnimalPai()+
-				"', '"+
+				", "+
 				animal.getCodAnimalMae()+
-				"', '"+
+				", '"+
 				DateSqlHelper.toDateSql(animal.getDtNascAnimal())+
 				"')";
 		System.out.println(inserir_animal);
