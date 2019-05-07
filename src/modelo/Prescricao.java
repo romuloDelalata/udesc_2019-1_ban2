@@ -10,6 +10,7 @@ public class Prescricao {
 		this.diagnosticoconsulta = diagnosticoconsulta;
 		this.nomemedicamento = nomemedicamento;
 	}
+	
 	public int getCodconsulta() {
 		return codconsulta;
 	}
@@ -21,6 +22,4 @@ public class Prescricao {
 	public String getNomemedicamento() {
 		return nomemedicamento;
 	}
-	
-
 }
