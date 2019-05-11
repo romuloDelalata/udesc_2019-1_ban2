@@ -29,6 +29,7 @@ public class ConsultaResource {
 	@Path("consulta")
 	@POST
 	public String cadastra(String dados) throws SQLException {
+		System.out.println("Cadastrando consultas : " + dados);
 		Consulta consulta = new Gson().fromJson(dados, Consulta.class);
 		return String.valueOf(controller.cadastrar(consulta));
 	}

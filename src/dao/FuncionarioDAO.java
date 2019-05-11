@@ -2,12 +2,9 @@ package dao;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import configuracao.conexao;
-import helpers.DateSqlHelper;
-import modelo.Animal;
 import modelo.Funcionario;
 
 public class FuncionarioDAO {
@@ -19,9 +16,9 @@ public class FuncionarioDAO {
 
 	public boolean inserir_funcionario(Funcionario funcionario) {
 		String inserir_funcionario = "insert into funcionarios (matricula, nome, endereco, email, crmv, especialidade)"+
-				"values('"+
-				funcionario.getMatricula()+
-				"', '"+
+				"values("
+				+"(select max(matricula)+1 from funcionarios )"+
+				", '"+
 				funcionario.getNome()+
 				"', '"+
 				funcionario.getEndereco()+

@@ -110,11 +110,11 @@ public class ConsultaDAO {
 		String att_consulta = "update consultas set"
 				+" codanimal = "+consulta.getCodanimal()+","
 				+" matricula = "+consulta.getMatricula()+","
-				+" data = "+DateSqlHelper.toDateSql(consulta.getDataConsulta())+","
-				+" diagnosticoconsulta = "+consulta.getDiagnosticoconsulta()
+				+" data = '"+DateSqlHelper.toDateSql(consulta.getDataConsulta())+"',"
+				+" diagnosticoconsulta = '"+consulta.getDiagnosticoconsulta()+"'"
 				+" where codconsulta = "+consulta.getCodconsulta()
 				+" ;";
-
+		System.out.println(att_consulta);
 		int resultado_att_consulta = con.executaSQL(att_consulta);
 		if(resultado_att_consulta > 0) {
 			System.out.println("Atualizacao de consulta feito com sucesso!");

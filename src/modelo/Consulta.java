@@ -64,4 +64,8 @@ public class Consulta {
 	public void setCodConsulta(Integer codconsulta) {
 		this.codconsulta = codconsulta;
 	}
+
+	public List<Medicamento> getMedicamentos() {
+		return this.medicamentos;
+	}
 }

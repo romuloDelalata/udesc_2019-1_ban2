@@ -2,6 +2,7 @@ package configuracao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class conexao {
@@ -38,6 +39,10 @@ public class conexao {
 		
 	}
 	
+	public Statement createStatement() throws SQLException {
+		return con.createStatement();
+	}
+	
 	public ResultSet executaBusca(String sql) {
 		try {
 			Statement stm = con.createStatement();
@@ -48,6 +53,10 @@ public class conexao {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	public void close() throws SQLException {
+		con.close();
 	}
 	
 }
